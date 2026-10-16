@@ -1,16 +1,18 @@
-Práctica 6: Servidor Web Nginx con Docker Compose
+# Práctica 6: Servidor Web Nginx con Docker Compose
+**Asignatura:** Electiva 2  
+**Autor:** Franciel
 
-Asignatura: Electiva 2
+---
 
-Autor: Franciel
+## Descripción del Proyecto
 
-📌 Descripción del Proyecto
+Este repositorio contiene la configuración e infraestructura como código necesaria para desplegar un servidor web **Nginx** localmente mediante **Docker Compose**. 
 
-Este repositorio contiene la configuración e infraestructura como código necesaria para desplegar un servidor web Nginx localmente mediante Docker Compose.
+El proyecto demuestra el uso de volúmenes persistentes y de solo lectura (`bind mounts`), vinculando un directorio local con los archivos estáticos dentro del contenedor Nginx sin necesidad de reconstruir la imagen.
 
-El proyecto demuestra el uso de volúmenes persistentes y de solo lectura (bind mounts), vinculando un directorio local con los archivos estáticos dentro del contenedor Nginx sin necesidad de reconstruir la imagen.
+---
 
-📂 Estructura del Directorio
+## Estructura del Directorio
 
 .
 ├── src/
@@ -20,50 +22,54 @@ El proyecto demuestra el uso de volúmenes persistentes y de solo lectura (bind 
 └── README.md               # Documentación del proyecto
 
 
+---
+
 ## Tecnologías Utilizadas
 
-Docker & Docker Compose: Orquestación y contenedorización del servicio.
+* **Docker & Docker Compose:** Orquestación y contenedorización del servicio.
+* **Nginx (`nginx:alpine`):** Servidor HTTP ligero y de alto rendimiento.
+* **HTML5:** Archivo base de visualización web.
+* **Git & GitHub:** Control de versiones y publicación del repositorio.
 
-Nginx (nginx:alpine): Servidor HTTP ligero y de alto rendimiento.
-
-HTML5: Archivo base de visualización web.
-
-Git & GitHub: Control de versiones y publicación del repositorio.
+---
 
 ## Despliegue y Ejecución
 
-Prerrequisitos
+### Prerrequisitos
 
-Tener instalado Docker Desktop (con WSL 2 habilitado en Windows).
+* Tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/) (con WSL 2 habilitado en Windows).
+* Tener instalado Git.
 
-Tener instalado Git.
+### Pasos para levantar el servicio
 
-Pasos para levantar el servicio
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/francielgod/nginx-docker-practica6-Electiva2.git
+   cd nginx-docker-practica6-Electiva2
+   ```
 
-## Clonar el repositorio:
+2. **Iniciar el contenedor en segundo plano:**
+   ```bash
+   docker compose up -d
+   ```
 
-git clone https://github.com/francielgod/nginx-docker-practica6-Electiva2.git
-cd nginx-docker-practica6-Electiva2
+3. **Verificar el estado del contenedor:**
+   ```bash
+   docker compose ps
+   ```
 
+4. **Acceder a la aplicación:**
+   Abre un navegador web e ingresa a:
+   ```text
+   http://localhost:8080
+   ```
 
-Iniciar el contenedor en segundo plano:
+---
 
-docker compose up -d
-
-
-Verificar el estado del contenedor:
-
-docker compose ps
-
-
-Acceder a la aplicación:
-Abre un navegador web e ingresa a:
-
-http://localhost:8080
-
-
-🛑 Detener el Servicio
+## Detener el Servicio
 
 Para detener y remover los contenedores y redes asociadas creadas por Docker Compose:
 
+```bash
 docker compose down
+```
